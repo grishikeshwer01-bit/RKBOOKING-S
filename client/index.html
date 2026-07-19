@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GK EVENT MANAGEMENT</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!--Pdf Generation-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<!-- ================= LOADER ================= -->
+<div id="loader">
+    <div class="spinner-border text-light"></div>
+    <h3>GK EVENT MANAGEMENT</h3>
+</div>
+
+<!-- ================= LOGIN PAGE ================= -->
+<section id="loginPage" class="page-section">
+
+    <div class="login-container">
+
+        <div class="glass-card">
+
+            <h2 class="text-center mb-4">
+                GK EVENT MANAGEMENT
+            </h2>
+
+            <form id="loginForm" >
+
+                <div class="mb-3">
+                    <label><i class="fas fa-phone"></i>Mobile Number</label>
+                    <input type="tel"
+                           class="form-control"
+                           id="loginUser"
+                           name="mobile"
+                           placeholder="Mobile Number" required
+                           maxlength="10"
+                           autocomplete="off"
+                            inputmode="numeric">      
+                </div>
+
+                <div class="mb-3">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password"
+                           class="form-control"
+                           id="loginPassword"
+                           placeholder="Enter Password" required >
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="rememberMe">
+
+                    <label class="form-check-label">
+                        Remember Me
+                    </label>
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary w-100">
+                    Login
+                </button>
+
+                <p class="text-center mt-3">
+                    New User?
+                    <a href="#" id="showSignup">
+                        Sign Up
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SIGNUP PAGE ================= -->
+<section id="signupPage" class="page-section d-none">
+
+    <div class="login-container">
+
+        <div class="glass-card">
+
+            <h2 class="text-center mb-4">
+                Create Account
+            </h2>
+
+            <form id="signupForm">
+
+                <div class="mb-3">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text"
+                           id="fullName"
+                           class="form-control"
+                           placeholder="Full Name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label><i class="fas fa-envelope"></i> Email</label>    
+                    <input type="email"
+                           id="signupEmail"
+                           class="form-control"
+                           placeholder="Email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label><i class="fas fa-phone"></i> Phone Number</label>
+                    <input type="tel"
+                           id="signupMobile"
+                           class="form-control"
+                           pattern="[0-9]{10}"
+                           placeholder="Phone Number" required
+                            maxlength="10">
+                </div>
+
+                <div class="mb-3">
+                    <label><i class="fas fa-lock"></i> Password</label> 
+                    <input type="password"
+                           id="signupPassword"
+                           class="form-control"
+                           placeholder="Password" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password"
+                           id="confirmPassword"
+                           class="form-control"
+                           placeholder="Confirm Password" required>
+                </div>
+
+                <button class="btn btn-success w-100">
+                    Create Account
+                </button>
+
+                <p class="text-center mt-3">
+                    Already Have Account?
+                    <a href="#" id="showLogin">
+                        Login
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= OTP PAGE ================= -->
+<section id="otpPage" class="page-section d-none">
+
+    <div class="otp-page">
+
+        <div class="glass-card text-center">
+
+            <div class="logo">🔐 OTP Verification</div>
+                
+                <p id="otpDisplay" style="color:red;font-weight:bold;"></p>
+                <p>Enter the 4-digit OTP sent to your phone</p>
+                <div class="otp-inputs">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                    <input type="text" class="otp-input" maxlength="1">
+                </div>
+                <button id="verifyOtp"
+                    class="btn btn-success w-100 mt-3">
+                    Verify OTP
+                </button>
+                <p style="margin-top: 15px;"><a href="#" id="resendOtp">Resend OTP</a></p>
+                  
+            </div>
+   
+        </div>
+
+    
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section id="dashboardPage" class="d-none">
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">
+         <i class="fa-solid fa-calendar-check"></i>
+         GK EVENT MANAGEMENT
+         
+        </a>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+
+            <a href="#" class="nav-link" onclick="showSection('Home')">
+                <i class="fas fa-home"></i> Home
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('Achievements')">
+                <i class="fas fa-trophy"></i> Achievements
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('Reviews')">
+                <i class="fas fa-star"></i> Reviews
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('Help')">
+                <i class="fas fa-question-circle"></i> Help
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('Contact')">
+                <i class="fas fa-phone"></i> Contact
+            </a>
+
+            <button class="btn btn-warning" id="darkModeBtn">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+
+            <button class="btn btn-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+
+        </div>
+        
+    </div>
+
+    </nav>
+
+    <!-- MAIN -->
+    <div class="container-fluid">
+    
+    
+            <!-- CONTENT -->
+            <div class="col-md-12 p-5">
+
+                <!-- SEARCH -->
+                <input type="text"
+                class="form-control mb-4"
+                placeholder="Search Services">
+
+                <!-- HOME -->
+                <section id="Home">
+
+                    <div class="banner">
+
+                        <h1>WELCOME TO GK EVENT MANAGEMENT</h1>
+
+                        <p>
+                            Professional Event Management,
+                            Function Hall Booking &
+                            Travel Booking Services
+                        </p>    
+
+                        
+
+
+
+
+                    </div>
+
+                    <div class="row mt-5">
+
+                        <div class="col-md-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552"
+                                class="img-fluid"> 
+
+                                <h4>Event Management</h4>
+
+                                <p>Wedding, Birthday, Dawath, Saree Functions.</p>
+
+                                <button class="btn btn-primary" id ="EventBookingBtn">
+                                    Start Booking
+                                </button>   
+
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-4">
+
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3"
+                                class="img-fluid"> 
+
+                                <h4>Function Hall Booking</h4>
+
+                                <p>Premium Convention Halls.</p>
+
+                                <button class="btn btn-success" id="HallBookingBtn">
+                                    Start Booking   
+                                </button>   
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+                                class="img-fluid"> 
+
+                                <h4>Travel Booking</h4>
+
+                                <p>Tour Packages Across South India.</p>
+
+                                <button class="btn btn-warning" id="TravelBookingBtn">
+                                Start Booking
+                                </button>
+
+
+                            </div>
+                        </div>
+
+                        <!--My Booking card--->
+                        <div class="col-md-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200"
+                                class="img-fluid rounded shadow"
+                                style="width:100%;height:250px;object-fit:cover;">
+
+                                <h4>My Booking</h4>
+
+                                <button class="btn btn-secondary"
+                                    onclick="showSection('MyBooking'); loadBookings();">
+                                    Show Booking    
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="MyBooking" class="d-none">
+
+                    <button class="btn btn-secondary mb-3"
+                        onclick="showSection('Home')">
+                        ← Back to Home
+                    </button>
+
+                    <h2>My Bookings</h2>
+                    <div id="bookingList"></div>
+
+                </section>
+
+                <!-- EVENT BOOKING -->
+
+                <section id="EventBooking"class="d-none">
+                    <button type="button" class="btn btn-secondary mb-3" id="backToHome1">
+                        ← Back to Home
+                    </button>
+                    <h2 class="mb-4">Event Management</h2>
+                    <div class="row">
+
+                        <!-- Marriage -->
+                        <div class="col-md-4 mb-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552"
+                                class="img-fluid rounded">
+
+                                <h4 class="mt-3">Marriage Function</h4>
+
+                                <p>
+                                    Complete wedding planning including
+                                    Haldi, Mehndi, Sangeet,
+                                    Reception, Photography and Foodsection.
+                                </p>
+                                
+                                <button class="btn btn-primary w-100" id="marriageBtn">
+                                    Book Marriage
+                                </button>
+
+                            </div>
+                        </div>
+     
+                       <!-- Birthday -->
+                        <div class="col-md-4 mb-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84"
+                                class="img-fluid rounded">
+
+                                <h4 class="mt-3">Birthday Function</h4>
+
+                                <p>
+                                    Birthday or Stage decoration,
+                                    cake arrangements,
+                                    DJ, photography,food section and return gifts.
+                                </p>    
+
+                                <button class="btn btn-success w-100"
+                                    id="birthdayBtn">
+                                    Book Birthday
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- Saree Function -->
+                        <div class="col-md-4 mb-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c"
+                                class="img-fluid rounded">
+
+                                <h4 class="mt-3">Saree Function</h4>
+
+                                <p>
+                                    Traditional saree ceremony
+                                    with Stage decoration,
+                                    catering DJ and photography.
+                                </p>    
+
+                                <button class="btn btn-warning w-100"
+                                    id="sareeBtn">
+                                    Book Saree Function
+                                </button>   
+
+                            </div>  
+                        </div>
+ 
+                        <!-- Dawath -->
+                        <div class="col-md-4 mb-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1555244162-803834f70033"
+                                class="img-fluid rounded">
+
+                                <h4 class="mt-3">Dawath Function</h4>
+
+                                <p>
+                                    Catering arrangements,
+                                    seating,photography,decoration and sound systems.
+                                </p>
+                                <button class="btn btn-danger w-100"
+                                    id="dawathBtn">
+                                    Book Dawath
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- Other Event -->
+                        <div class="col-md-4 mb-4">
+                            <div class="service-card">
+
+                                <img src="https://images.unsplash.com/photo-1511578314322-379afb476865"
+                                class="img-fluid rounded">
+
+                                <h4 class="mt-3">Other Event</h4>
+
+                                <p>
+                                    Any custom event can be booked.
+                                </p>
+
+                                <textarea
+                                    class="form-control mb-3"
+                                    rows="4"
+                                    id="customEventText"
+                                    placeholder="Write your event details here">
+                                </textarea>
+
+                                <button class="btn btn-dark w-100"
+                                    id="customEventBtn">
+                                    Submit Custom Event
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            
+                <section>
+
+                    <section id="MarriageServices" class="d-none">
+
+                        <button class="btn btn-secondary mb-3" id="backToEvents">
+                            ← Back
+                        </button>
+
+                        <h2>Marriage Event Services</h2>
+
+                        <div class="row">
+
+                            <!-- Ceremony Services -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+                                    <h4>Ceremony Services</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="haldi">
+                                        <label class="form-check-label">Haldi</label>
+                                    </div>
+                
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sangeet">
+                                        <label class="form-check-label">Sangeet</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="mehndi">
+                                        <label class="form-check-label">Mehndi</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="baraat">
+                                        <label class="form-check-label">Baraat</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="reception">
+                                        <label class="form-check-label">Reception</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Photography -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+                                    <h4>Photography</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="weddingPhoto">
+                                        <label class="form-check-label">
+                                            Photography
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="preWedding">
+                                        <label class="form-check-label">
+                                            Pre-Wedding Shoot
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="weddingShoot">
+                                        <label class="form-check-label">
+                                            Wedding Shoot
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Food -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+                                    <h4>Food Section</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="vegFood">
+                                        <label class="form-check-label">
+                                            Veg
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="nonVegFood">
+                                        <label class="form-check-label">
+                                            Non-Veg
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="bothFood">
+                                        <label class="form-check-label">
+                                            Both
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="marriageMessage"
+                            class="alert alert-warning d-none">
+                        </div>
+
+                        <button class="btn btn-success mt-4" id="confirmMarriage">
+                            Confirm Marriage Booking
+                        </button>
+
+                    </section>
+
+                    <!-- BIRTHDAY SERVICES -->
+                    <section id="BirthdayServices" class="d-none">
+
+                        <button class="btn btn-secondary mb-3" id="backToBirthdayEvents">
+                            ← Back
+                        </button>
+
+                        <h2>Birthday Event Services</h2>
+
+                        <div class="row">
+
+                            <!-- Decoration -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+
+                                    <h4>Decoration</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="balloonDecor">
+                                        <label class="form-check-label">
+                                            Balloon Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="stageDecor">
+                                        <label class="form-check-label">
+                                            Stage Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="themeDecor">
+                                        <label class="form-check-label">
+                                            Theme Decoration
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Entertainment -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+
+                                    <h4>Entertainment</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="djMusic">
+                                        <label class="form-check-label">
+                                            DJ Music
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="magicShow">
+                                        <label class="form-check-label">
+                                            Magic Show
+                                        </label>    
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="games">
+                                        <label class="form-check-label">
+                                            Kids Games
+                                        </label>
+                                    </div>  
+
+                                </div>
+                            </div>
+
+                            <!-- Food & Cake -->
+                            <div class="col-md-4">
+                                <div class="card p-3">
+
+                                    <h4>Food & Cake</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="cake">
+                                        <label class="form-check-label">
+                                            Birthday Cake
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="vegMenu">
+                                        <label class="form-check-label">
+                                            Veg Food
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="nonVegMenu">
+                                        <label class="form-check-label">
+                                            Non-Veg Food
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="bothBirthdayFood">
+                                        <label class="form-check-label">
+                                            Both
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Photography -->
+                            <div class="col-md-4 mt-3">
+                                <div class="card p-3">
+
+                                    <h4>Photography</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="birthdayPhoto">
+                                        <label class="form-check-label">
+                                            Photography
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="pre-birthdayshoot">
+                                        <label class="form-check-label">
+                                            Pre-Birthday Shoot
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="birthdayVideo">
+                                        <label class="form-check-label">
+                                            Videography
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="birthdayMessage"
+                            class="alert alert-warning d-none">
+                        </div>
+
+                        <button class="btn btn-success mt-4" id="confirmBirthday">
+                            Confirm Birthday Booking
+                        </button>
+    
+                    </section>
+
+                    <!-- ================= SAREE FUNCTION SERVICES ================= -->
+
+                    <section id="SareeServices" class="d-none">
+
+                        <button class="btn btn-secondary mb-3" id="backToSareeEvents">
+                            ← Back
+                        </button>
+
+                        <h2>Saree Function Services</h2>
+
+                        <div class="row">
+
+                            <!-- Decoration -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Decoration</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sareeStage">
+                                        <label class="form-check-label">
+                                            Stage Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="flowerDecor">
+                                        <label class="form-check-label">
+                                            Flower Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="ledDecor">
+                                        <label class="form-check-label">
+                                            LED Decoration
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Photography -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Photography</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sareePhoto">
+                                        <label class="form-check-label">
+                                            Photography
+                                        </label>
+                                    </div>
+
+                                    
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="preSareeShoot">
+                                    <label class="form-check-label">
+                                        Pre-Shoot
+                                    </label>
+                                </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sareeVideo">
+                                        <label class="form-check-label">
+                                            Videography
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Food -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Food Section</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sareeVeg">
+                                        <label class="form-check-label">
+                                            Veg Food
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="sareeNonVeg">
+                                        <label class="form-check-label">
+                                            Non-Veg Food
+                                        </label>
+                                    </div>
+
+                                    
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="bothSareeFood">
+                                    <label class="form-check-label">
+                                        Both
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- Entertainment -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Entertainment</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="djSystem">
+                                        <label class="form-check-label">
+                                            DJ Sound System
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="liveMusic">
+                                        <label class="form-check-label">
+                                            Live Music
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Saree Ceremony -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Ceremony Arrangements</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="welcomeGuests">
+                                        <label class="form-check-label">
+                                            Welcome Arrangements
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="giftCounter">
+                                        <label class="form-check-label">
+                                            Gift Counter
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="returnGifts">
+                                        <label class="form-check-label">
+                                            Return Gifts
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="sareeMessage"
+                            class="alert alert-warning d-none">
+                        </div>
+
+                        <button class="btn btn-success mt-4 w-100"
+                         id="confirmSaree">
+                            Confirm Saree Function Booking
+                        </button>
+                    </section>
+    
+                    <!-- ================= DAWATH FUNCTION SERVICES ================= -->
+
+                    <section id="DawathServices" class="d-none">
+
+                        <button class="btn btn-secondary mb-3" id="backToDawathEvents">
+                            ← Back
+                        </button>
+
+                        <h2>Dawath Function Services</h2>
+
+                        <div class="row">
+
+                            <!-- Food Section -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Food Menu</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dawathVegFood">
+                                        <label class="form-check-label">
+                                            Veg Food
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dawathNonVegFood">
+                                        <label class="form-check-label">
+                                            Non-Veg Food
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="bothDawathFood">
+                                        <label class="form-check-label">
+                                            Both
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Decoration -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Decoration</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="stageDecorDawath">
+                                        <label class="form-check-label">
+                                            Stage Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="flowerDecorDawath">
+                                        <label class="form-check-label">
+                                            Flower Decoration
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="lightingDecor">
+                                        <label class="form-check-label">
+                                            Lighting Decoration
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Photography -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Photography</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dawathPhoto">
+                                        <label class="form-check-label">
+                                            Photography
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dawathVideo">
+                                        <label class="form-check-label">
+                                            Videography
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="dronePhotography">
+                                        <label class="form-check-label">
+                                            Drone Coverage
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Seating -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Guest Arrangements</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="guestSeating">
+                                        <label class="form-check-label">
+                                            Guest Seating
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="vipSeating">
+                                        <label class="form-check-label">
+                                            VIP Seating
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="welcomeTeam">
+                                        <label class="form-check-label">
+                                            Welcome Team
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Sound System -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card p-3">
+
+                                    <h4>Sound System</h4>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="micSystem">
+                                        <label class="form-check-label">
+                                            Wireless Mic
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="speakerSystem">
+                                        <label class="form-check-label">
+                                            Speaker System
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="liveAnnouncements">
+                                        <label class="form-check-label">
+                                            Live Announcements
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="dawathMessage"
+                            class="alert alert-warning d-none">
+                        </div>
+
+                        <button class="btn btn-success mt-4 w-100"
+                                id="confirmDawath">
+                            Confirm Dawath Booking
+                        </button>
+
+                    </section>
+                
+                    <!-- FUNCTION HALL -->
+                    <section id="HallBooking" class="hall-selection d-none">
+
+                        <button type="button" class="btn btn-secondary mb-3" id="backToHome2">
+                            ← Back to Home
+                        </button>
+                        <h2>Function Hall Booking</h2>
+
+                        <label>Event Day Date</label>
+                        <input type="date" id="hallEventDate" class="from-control">
+                        <div>
+                            <label class="form-label mt-3">Select Shift</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                type="radio"
+                                name="hallShift"
+                                id="morningShift"
+                                value="6:00 AM - 5:00 PM">
+
+                                <label class="form-check-label"
+                                    for="morningShift">
+                                    Morning Shift (6:00 AM - 5:00 PM)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                type="radio"                                    name="hallShift"
+                                id="eveningShift"
+                                value="6:00 pm - 1:00 Am">
+
+                                <label class="form-check-label"
+                                for="morningShift">
+                                Evening Shift(6:00 pm - 1:00 Am)
+                                </label>
+                            </div>
+
+
+                        </div>
+                        <div class="hall-card">
+                            <div class="location-selector">
+
+                                <select id="state">
+                                    <option value="">Select State</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Kerala">Kerala</option> 
+                                    <option value="Goa">Goa</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>          
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Gujarat">Gujarat</option>                        
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>      
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>  
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>  
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+
+                                </select>
+
+                                <select id="district"           >
+                                    <option value="">District</option>
+                                </select>
+                        
+                                <select id="mandal">
+                                    <option value="">Mandal</option>
+                                </select>
+                    
+                            </div>
+                        </div>
+                        
+                        <div id="hallsList" class="row mt-3"></div>
+                        
+                        <div id="habookingDetails" class="mt-3"></div>
+
+                        
+                        <div id="confirmHallSection">
+
+                            <button
+                                class="btn btn-success"
+                                onclick="confirmHallBooking()">
+                                Confirm Hall Booking
+                            </button>
+
+                        </div>    
+
+
+                    </section>
+
+                    <!-- TRAVEL BOOKING -->
+                    <section id="TravelBooking" class="d-none">
+                        
+                        <button class="btn btn-secondary mb-3" id="backToHome3">
+                            ← Back to Home
+                        </button>
+
+                        <h2>Travel Booking</h2>
+
+                        <div class="travel-form-container">
+                            <div class="mb-3">
+                                <label>Country</label>
+                                <select id="travelState" class="form-control">
+                                <option value="">Select Country</option>
+                                <option value="India">India</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>State</label>
+                                <select id="travelDistrict" class="form-control">
+                                    <option value="">Select State </option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Kerala">Kerala</option> 
+                                    <option value="Goa">Goa</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>          
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Gujarat">Gujarat</option>                        
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jharkhand">Jharkhand</option>      
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>  
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>  
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                            </div>
+
+                            <div id="travelPlacesList" class="row mt-3"></div>
+
+                            <div id="selectedPlacesSection" class="mt-3">
+                                <h4>Selected Places</h4>
+                                <div id="selectedPlaces"></div>
+
+                                <div class="mb-3">
+                                    <label>From Date</label>
+                                    <input type="date" id="fromDate" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label>To Date</label>
+                                    <input type="date" id="toDate" class="form-control">
+                                </div>
+                                    
+                            
+                                <button class="btn btn-success mt-3"
+                                    onclick="confirmTravelBooking()">
+                                    Confirm Booking
+                                </button> 
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section id="PaymentSection" class="d-none">
+
+                    <button class="btn btn-secondary mb-3" 
+                        onclick="backFromPayment()">
+                        ← Back
+                    </button>
+
+                    <h2>Payment Details</h2>
+
+                   <div class="card p-3">
+
+                        <div id="paymentSummary" class="card p-3 mb-3"></div>
+
+                        <div class="card p-3 mt-3">
+
+                            <h5>Payment Type</h5>
+                            <span id="paymentAmount">0</span>
+
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                type="radio"
+                                name="paymentType"
+                                id="fullPayment"
+                                checked
+                                onchange="updatePaymentAmount()">
+
+                                <label class="form-check-label">
+                                    Full Payment
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                type="radio"
+                                name="paymentType"
+                                id="halfPayment"
+                                onchange="updatePaymentAmount()">
+
+                                <label class="form-check-label">
+                                    Half Payment
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                type="radio" 
+                                name="paymentType"
+                                id="officePayment"
+                                onchange="updatePaymentAmount()">
+
+                                <label class="form-check-label">
+                                    Pay At Office
+                                </label>
+                            </div>
+
+                            <hr>
+
+                            <h5>
+                                Payable Amount :
+                                ₹<span id="payableAmount">0</span>
+                            </h5>
+
+                        </div>  
+
+                            <div class="card p-3 mt-3">
+
+                                <h5>Payment Method</h5>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                        type="radio"
+                                        name="paymentMethod"
+                                        id="upiMethod"
+                                        checked
+                                        onchange="showPaymentFields()">
+
+                                    <label class="form-check-label">
+                                        UPI
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                        type="radio"
+                                        name="paymentMethod"
+                                        id="cardMethod"
+                                        onchange="showPaymentFields()">
+
+                                    <label class="form-check-label">
+                                        Credit / Debit Card
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div id="upiSection" class="mt-3">
+
+                                <label class="form-label">
+                                    Enter UPI ID
+                                </label>
+
+                                <input type="text"
+                                    id="upiId"
+                                    class="form-control"
+                                    placeholder="example@upi">
+
+                            </div>
+
+                            <div id="cardSection"
+                                class="mt-3 d-none">
+
+                                <input type="text"
+                                    class="form-control mb-2"
+                                    id="cardNumber"
+                                    placeholder="Card Number">
+
+                                <input type="text"
+                                    class="form-control mb-2"
+                                    id="cardName"
+                                    placeholder="Card Holder Name">
+
+                                <input type="text"
+                                    class="form-control mb-2"
+                                    id="cardExpiry"
+                                    placeholder="MM/YY">
+
+                                <input type="password"
+                                    class="form-control"
+                                    id="cardCVV"
+                                    placeholder="CVV">
+
+                            </div>
+
+                            <button
+                                class="btn btn-success mt-4"
+                                id="confirmPaymentBtn">
+                                Confirm Payment
+                            </button>
+                           
+                        </div>
+
+                        <div id="paymentHistory"></div>
+                        
+
+                    </div>
+
+                </section>
+                <section id="BookingSuccess" class="d-none">
+
+    <div class="container text-center py-5">
+
+        <h1 class="text-success">
+            ✅ Booking Confirmed
+        </h1>
+
+        
+        <h4 id="bookingIdDisplay"></h4>
+
+        <button
+            class="btn btn-primary m-2"
+            id="downloadReceiptBtn">
+            Download Receipt
+        </button>
+
+        <div id="bookingDetailsDisplay" class="card p-3 mt-3 text-start">
+</div>   
+
+        <button
+            class="btn btn-success m-2"
+            onclick="showSection('Home')">
+            Go To Home
+        </button>
+
+    </div>
+
+</section>
+            </div>
+            
+        </div>
+    </div>
+        
+        
+        
+</section>
+        
+
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- AOS -->        
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
+<!-- Custom JS -->
+<script src="script.js"></script>
+
+</body>
+
+</html>

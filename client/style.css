@@ -1,0 +1,559 @@
+/* ==================================================
+   GK EVENT MANAGEMENT
+   style.css
+================================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f6f9;
+    color:#222;
+    overflow-x:hidden;
+    transition:0.4s;
+}
+
+/* ==========================================
+   LOADER
+========================================== */
+
+#loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:#111827;
+    z-index:99999;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+#loader h3{
+    margin-top:20px;
+    letter-spacing:2px;
+}
+
+/* ==========================================
+   LOGIN + SIGNUP + OTP
+========================================== */
+
+.page-section{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+    ),
+    url("https://images.unsplash.com/photo-1511795409834-ef04bbd61622")
+    center center/cover no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-container{
+    width:100%;
+    max-width:500px;
+}
+
+.glass-card{
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    background:rgba(255,255,255,0.12);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    color:white;
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.3);
+
+    animation:fadeIn 0.8s ease;
+}
+
+.glass-card h2{
+    font-weight:700;
+}
+
+.glass-card label{
+    margin-bottom:5px;
+}
+
+.glass-card .form-control{
+
+    background:rgba(255,255,255,0.15);
+    border:none;
+    color:white;
+}
+
+.glass-card .form-control::placeholder{
+    color:#ddd;
+}
+
+.glass-card .form-control:focus{
+    background:rgba(255,255,255,0.2);
+    color:white;
+    box-shadow:none;
+}
+
+.glass-card a{
+    color:#ffd43b;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.glass-card a:hover{
+    text-decoration:underline;
+}
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar-brand{
+    font-weight:700;
+    font-size:1.3rem;
+}
+
+.navbar a,
+.nav-link{
+    color: white !important;
+    font-weight: 600;
+}
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar{
+    min-height:100vh;
+    background:#111827;
+    color:white;
+    padding:25px 15px;
+}
+
+.sidebar h4{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    margin:15px 0;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+    transform:translateX(5px);
+}
+
+/* ==========================================
+   BANNER
+========================================== */
+
+.banner{
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    ),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed")
+    center center/cover no-repeat;
+
+    color:white;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:80px 30px;
+
+    margin-bottom:40px;
+
+    animation:fadeIn 1s;
+}
+
+.banner h1{
+    font-size:3rem;
+    font-weight:800;
+}
+
+.banner p{
+    margin-top:15px;
+    font-size:1.1rem;
+}
+
+/* ==========================================
+   SERVICE CARDS
+========================================== */
+
+.service-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.4s;
+    margin-bottom:25px;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+}
+
+.service-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.service-card h4{
+    padding:15px;
+    font-weight:700;
+}
+
+.service-card p{
+    padding:0 15px;
+}
+
+.service-card button{
+    margin:15px;
+}
+
+/* ==========================================
+   HALL CARD
+========================================== */
+
+.hall-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    padding:15px;
+
+    text-align:center;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.1);
+
+    transition:0.4s;
+}
+
+.hall-card:hover{
+    transform:translateY(-6px);
+}
+
+.hall-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.hall-card h5{
+    margin-top:15px;
+}
+
+/* ==========================================
+   FORMS
+========================================== */
+
+form{
+    margin-top:20px;
+}
+
+.form-control,
+.form-select{
+
+    border-radius:10px;
+    min-height:50px;
+}
+
+.btn{
+    border-radius:10px;
+    font-weight:600;
+}
+
+/* ==========================================
+   CUSTOMER CARE
+========================================== */
+
+section h2{
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+section .btn{
+    margin:5px;
+}
+
+.customer-care{
+    margin-top:30px;
+    padding:20px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   SEARCH BAR
+========================================== */
+
+input[placeholder="Search Services"]{
+    height:55px;
+    border-radius:30px;
+    padding-left:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   DARK MODE
+========================================== */
+
+.dark-mode{
+    background:#0f172a;
+    color:white;
+}
+
+.dark-mode .service-card,
+.dark-mode .hall-card{
+    background:#1e293b;
+    color:white;
+}
+
+.dark-mode .sidebar{
+    background:#020617;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select{
+    background:#1e293b;
+    color:white;
+    border:1px solid #334155;
+}
+
+.dark-mode .form-control::placeholder{
+    color:#bbb;
+}
+
+.dark-mode .banner{
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.service-card:hover img{
+    animation:pulse 1s infinite;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(max-width:992px){
+
+    .sidebar{
+        min-height:auto;
+    }
+
+    .banner h1{
+        font-size:2.2rem;
+    }
+
+    .service-card img{
+        height:220px;
+    }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .banner{
+        padding:50px 20px;
+    }
+
+    .banner h1{
+        font-size:1.8rem;
+    }
+
+    .banner p{
+        font-size:0.95rem;
+    }
+
+    .glass-card{
+        padding:25px;
+    }
+
+    .service-card img{
+        height:200px;
+    }
+
+    .hall-card img{
+        height:180px;
+    }
+
+    .navbar-brand{
+        font-size:1rem;
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+    .glass-card{
+        padding:20px;
+    }
+
+    .banner h1{
+        font-size:1.5rem;
+    }
+
+    .btn{
+        width:100%;
+        margin-top:8px;
+    }
+
+    section .btn{
+        display:block;
+    }
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#ddd;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#1d4ed8;
+}
+
+/* ==========================================
+   FOOTER STYLE (Future Use)
+========================================== */
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+.footer a{
+    color:#ffd43b;
+    text-decoration:none;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+#loginPage,
+#signupPage,
+#otpPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+body{
+    overflow-x:hidden;
+}
